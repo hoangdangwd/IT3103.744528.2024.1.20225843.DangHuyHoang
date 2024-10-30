@@ -45,7 +45,7 @@ public class Cart {
         }
     }
 
-    public void searchByTitle(String title) {
+    public void sortByTitle(String title) {
         for (int i = 0; i < qtyOrdered; i++) {
             if (itemOrdered[i].getTitle().equalsIgnoreCase(title)) {
                 System.out.println("Found: " + itemOrdered[i].getTitle());
@@ -55,7 +55,7 @@ public class Cart {
         System.out.println("No disc with title: " + title);
     }
 
-    public void searchByID(int id) {
+    public void sortByID(int id) {
         for (int i = 0; i < qtyOrdered; i++) {
             if (itemOrdered[i].getId() == id) {
                 System.out.println("Found: " + itemOrdered[i].getTitle());
