@@ -90,6 +90,15 @@ public class Cart {
         }
         System.out.println("No disc with ID: " + id);
     }
-
-
+public void printCart() {
+    System.out.println("***********************CART***********************");
+    System.out.println("Ordered Items:");
+    float totalCost = 0;
+    for (int i = 0; i < qtyOrdered; i++) {
+        System.out.println((i + 1) + ". " + itemOrdered[i].toString());
+        totalCost += itemOrdered[i].getCost();
+    }
+    System.out.println("Total cost: " + totalCost + " $");
+    System.out.println("***************************************************");
+}
 }
