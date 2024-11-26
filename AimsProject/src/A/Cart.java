@@ -103,6 +103,7 @@ public void printCart() {
     System.out.println("***************************************************");
 }
 
+
 public void searchByTitle(String title) {
     boolean found = false;
     System.out.println("Search results for title: \"" + title + "\"");
