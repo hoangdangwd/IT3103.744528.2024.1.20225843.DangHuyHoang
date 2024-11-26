@@ -103,31 +103,4 @@ public void printCart() {
     System.out.println("***************************************************");
 }
 
-public void searchByTitle(String title) {
-    boolean found = false;
-    System.out.println("Search results for title: \"" + title + "\"");
-    for (int i = 0; i < qtyOrdered; i++) {
-        if (itemOrdered[i].isMatch(title)) {
-            System.out.println(itemOrdered[i].toString());
-            found = true;
-        }
-    }
-    if (!found) {
-        System.out.println("No disc with title \"" + title + "\" was found.");
-    }
-}
-
-public void searchById(int id) {
-    boolean found = false;
-    for (int i = 0; i < qtyOrdered; i++) {
-        if (itemOrdered[i].getId() == id) {
-            System.out.println("Found: " + itemOrdered[i].toString());
-            found = true;
-            break;
-        }
-    }
-    if (!found) {
-        System.out.println("No disc with ID: " + id);
-    }
-}
 }
