@@ -12,16 +12,6 @@ public class CompactDisc extends Disc{
 		this.artist=artist;
 		
 	}
-	public void play() {
-        if (Tracks.isEmpty()) {
-            System.out.println("No tracks to play on the Compact Disc: " + getTitle());
-        } else {
-            System.out.println("Playing Compact Disc: " + getTitle());
-            for (Track track : Tracks) {
-                track.play(); // Call play() on each Track
-            }
-        }
-	}
 
 	public String getArtist() {
 		return artist;
