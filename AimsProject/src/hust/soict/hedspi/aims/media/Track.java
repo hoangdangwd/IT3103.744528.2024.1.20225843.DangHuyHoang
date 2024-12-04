@@ -38,5 +38,17 @@ public class Track implements Playable{
     public static Track join(String string, ArrayList<Track> tracks) {
 		return null;
 	}
+    
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Track other = (Track) obj;
+        return this.title.equals(other.title) && this.length == other.length;
+    }
+
 
 }
