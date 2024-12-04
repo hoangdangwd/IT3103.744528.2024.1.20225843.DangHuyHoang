@@ -4,30 +4,31 @@ import java.util.*;
 
 public class Track {
 
-	private int length;
+	private float length;
 	private String title;
 
 	
-	public void Disc(String title, int length) {
+	public void Disc(String title, float length) {
 		
         this.title = title;
         this.length = length;
         
     }
+
 	
-	public int getLength() {
+	public float getLength() {
 		return length;
 	}
 	public String getTitle() {
 		return title;
 	}
 	
-    public void setTitle(String titleSet) {
-        this.title = titleSet;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setLength(int lengthSet) {
-        this.length = lengthSet;
+    public void setLength(float length) {
+        this.length = length;
     }
     
     public static Track join(String string, ArrayList<Track> tracks) {
