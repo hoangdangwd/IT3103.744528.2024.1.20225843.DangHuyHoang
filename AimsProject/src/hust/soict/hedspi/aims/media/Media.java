@@ -1,5 +1,6 @@
 package hust.soict.hedspi.aims.media;
 
+
 public abstract class Media {
 
 	private int id;
@@ -65,6 +66,19 @@ public abstract class Media {
 	public boolean isMatch(String title2) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	public boolean equals(Object obj) {
+	    if (this == obj) {
+	        return true;
+	    }
+	    if (obj == null || getClass() != obj.getClass()) {
+	        return false;
+	    }
+	    Media other = (Media) obj;
+	    return this.title.equals(other.title);
+	}
+	
 
-}
+
 }
