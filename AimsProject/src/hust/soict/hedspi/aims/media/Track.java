@@ -2,7 +2,7 @@ package hust.soict.hedspi.aims.media;
 
 import java.util.*;
 
-public class Track {
+public class Track implements Playable{
 
 	private float length;
 	private String title;

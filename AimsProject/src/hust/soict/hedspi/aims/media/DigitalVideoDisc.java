@@ -1,7 +1,7 @@
 package hust.soict.hedspi.aims.media;
 
 
-public class DigitalVideoDisc extends Disc {
+public class DigitalVideoDisc extends Disc implements Playable {
 	private int length;
 	private String director;
 
