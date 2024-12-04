@@ -79,6 +79,12 @@ public abstract class Media {
 	    return this.title.equals(other.title);
 	}
 	
-
+	public String toString() {
+        return "Media{" +
+               "title='" + title + '\'' +
+               ", category='" + category + '\'' +
+               ", cost=" + cost +
+               '}';
+}
 
 }
