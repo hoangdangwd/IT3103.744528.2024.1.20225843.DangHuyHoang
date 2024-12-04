@@ -18,7 +18,7 @@ public class CompactDisc extends Disc{
         } else {
             System.out.println("Playing Compact Disc: " + getTitle());
             for (Track track : Tracks) {
-                track.play(); // Call play() on each Track
+                track.play();
             }
         }
 	}
