@@ -6,12 +6,7 @@ public class Book extends Media{
 
 			private List<String> authors = new ArrayList<String>();
 
-			public Book(int id, String title, String category, float cost , List<String> authors ) {
-				
-				super(id, title, category, cost);
-		        this.authors = authors;
-				
-			}
+	
 			
 			public Book( String title, String category, float cost , List<String> authors ) {
 				

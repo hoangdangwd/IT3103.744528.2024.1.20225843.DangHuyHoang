@@ -33,12 +33,25 @@ public class Store {
             System.out.println(media.getTitle() + " is not found in the store.");
         }
     }
+    
+    public Media searchByTitle(String title) {
+        for (Media media : itemsInStore) { 
+            if (media.getTitle().equalsIgnoreCase(title)) { 
+                return media; 
+            }
+        }
+        return null;	
+    }
 
     public String toString() {
         StringBuilder storeContents = new StringBuilder("-----------Store contents:-------------\n");
         for (Media media : itemsInStore) {
-            storeContents.append(media.getTitle()).append("\n");
+            storeContents.append("ID: ").append(media.getId()).append(", ")
+                         .append("Title: ").append(media.getTitle()).append(", ")
+                         .append("Category: ").append(media.getCategory()).append(", ")
+                         .append("Cost: ").append(media.getCost()).append("\n");
         }
         return storeContents.toString();
     }
+
 }
