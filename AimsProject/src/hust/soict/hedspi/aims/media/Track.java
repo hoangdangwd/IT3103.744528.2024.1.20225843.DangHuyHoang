@@ -8,7 +8,7 @@ public class Track implements Playable{
 	private String title;
 
 	
-	public Track(String title, float length) {
+	public void Disc(String title, float length) {
 		
         this.title = title;
         this.length = length;
