@@ -14,7 +14,11 @@ public class Track {
         this.length = length;
         
     }
-
+	
+	public void play() {
+        System.out.println("Playing track: " + this.title);
+        System.out.println("Track length: " + this.length + " minutes");
+    }
 	
 	public float getLength() {
 		return length;
