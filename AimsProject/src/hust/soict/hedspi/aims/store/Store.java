@@ -2,7 +2,7 @@ package hust.soict.hedspi.aims.store;
 
 import java.util.LinkedList;
 
-import hust.soict.hedspi.aims.disc.DigitalVideoDisc;
+import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 
 public class Store {
   
