@@ -1,5 +1,9 @@
 package hust.soict.hedspi.aims.media;
 
+import java.util.*;
+
+import hust.soict.hedspi.aims.comparator.MediaComparatorByCostTitle;
+import hust.soict.hedspi.aims.comparator.MediaComparatorByTitleCost;
 
 public abstract class Media {
 
@@ -86,5 +90,8 @@ public abstract class Media {
                ", cost=" + cost +
                '}';
 }
+	
+	public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
+    public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
 
 }
