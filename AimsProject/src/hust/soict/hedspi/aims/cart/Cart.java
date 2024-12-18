@@ -1,21 +1,45 @@
 package hust.soict.hedspi.aims.cart;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.stream.Collectors;
 
+import hust.soict.hedspi.aims.exception.PlayerException;
 import hust.soict.hedspi.aims.media.Book;
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.media.Playable;
 import hust.soict.hedspi.aims.media.Track;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+
+
 
 public class Cart {
-	private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
-	public void addMedia(Media media) {
+	private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
+
+    public Cart() {
+    }
+    public void addMedia(Media media) {
+    	
+    	final int MAX_NUMBERS_ORDERED = 9; // Giới hạn số lượng media
+
         if (media != null) {
-            itemsOrdered.add(media);
-            System.out.println("Added: " + media.getTitle());
+            if (itemsOrdered.size() < MAX_NUMBERS_ORDERED) {
+                itemsOrdered.add(media);
+                System.out.println("Added: " + media.getTitle());
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(null, 
+                    "ERROR: The number of media has reached its limit.", 
+                    "Error", 
+                    javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
         } else {
-            System.out.println("Cannot add a null item.");
+            javax.swing.JOptionPane.showMessageDialog(null, 
+                "Cannot add a null item.", 
+                "Warning", 
+                javax.swing.JOptionPane.WARNING_MESSAGE);
         }
     }
 
@@ -71,15 +95,16 @@ public class Cart {
         if (!found) {
             System.out.println("No media found with ID: " + id);
         }
-}
-    public ArrayList<Media> getItemsOrdered() {
+    }
+
+
+	public ObservableList<Media> getItemsOrdered() {
 		return itemsOrdered;
 	}
 
-	public void setItemsOrdered(ArrayList<Media> itemsOrdered) {
+	public void setItemsOrdered(ObservableList<Media> itemsOrdered) {
 		this.itemsOrdered = itemsOrdered;
 	}
-	
 	public boolean contains(Media media) {
         for (Media item : itemsOrdered) {
             if (item.equals(media)) { // Sử dụng equals đã override trong Media
@@ -107,33 +132,23 @@ public class Cart {
 	                for (Media media : itemsOrdered) {
 	                	
 	                    if (media.getTitle().equalsIgnoreCase(titleFilter1)) {
-	                    	System.out.println("ID: " + media.getId() + ", Title: " + media.getTitle() + ", Category: " + media.getCategory() + ", Cost: " + media.getCost());
+	                        System.out.println(media.getTitle());
 	                    }
 	                }
 	    }
-	    public void filterCartbyId(String IdFilter1) {
-	        try {
-	            // Chuyển chuỗi thành số nguyên một lần
-	            int idFilter = Integer.parseInt(IdFilter1);
-
-	            // Lọc giỏ hàng theo ID
-	            List<Media> filterList = itemsOrdered.stream()
-	                    .filter(item -> item.getId() == idFilter) // Lọc phương tiện theo ID
-	                    .collect(Collectors.toList());
-
-	            if (filterList.isEmpty()) {
-	                System.out.println("No media found with ID: " + idFilter);
-	            } else {
-	                // Hiển thị danh sách phương tiện lọc được
-	                for (Media media : filterList) {
-	                	System.out.println("ID: " + media.getId() + ", Title: " + media.getTitle() + ", Category: " + media.getCategory() + ", Cost: " + media.getCost());
-;
-	                }
-	            }
-
-	        } catch (NumberFormatException e) {
-	            System.out.println("Invalid ID format. Please enter a valid numeric ID.");
-	        }
+	    public void filterCartbyId(String IdFilter1 ) {
+            for (Media media : itemsOrdered) {
+            	 try {
+            	        int idFilter = Integer.parseInt(IdFilter1); // Chuyển chuỗi sang số nguyên
+            	       
+            	       List<Media> filterList = itemsOrdered.stream()
+            	        	    .filter(item -> item.getId() == idFilter) // Đổi tên tham số từ 'media' thành 'item'
+            	        	    .collect(Collectors.toList());
+            	        System.out.println(media.getTitle()); // Hiển thị danh sách được lọc
+            	    } catch (NumberFormatException e) {
+            	        System.out.println("Invalid ID format. Please enter a valid numeric ID.");
+            	    }
+            }
 }
 
 	    // Sắp xếp giỏ hàng (có thể sắp xếp theo tiêu đề hoặc giá)
@@ -154,7 +169,12 @@ public class Cart {
 	    public void playMedia(String title) {
 	        for (Media media : itemsOrdered) {
 	            if (media.getTitle().equalsIgnoreCase(title)) {
-	                media.play();  // Assuming play() is a method in the Media class
+	                try {
+						media.play();
+					} catch (PlayerException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}  // Assuming play() is a method in the Media class
 	                return;
 	            }
 	        }
@@ -177,4 +197,10 @@ public class Cart {
 	        }
 	        System.out.println("Media not found in cart.");
 	    }
+		public void emptyCart() {
+			// TODO Auto-generated method stub
+			
+		}
+	 
+    
 }

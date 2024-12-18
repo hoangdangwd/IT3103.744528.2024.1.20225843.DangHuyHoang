@@ -3,6 +3,7 @@ package hust.soict.hedspi.aims;
 import java.util.*;
 
 import hust.soict.hedspi.aims.cart.Cart;
+import hust.soict.hedspi.aims.exception.PlayerException;
 import hust.soict.hedspi.aims.media.Book;
 import hust.soict.hedspi.aims.media.CompactDisc;
 import hust.soict.hedspi.aims.media.DigitalVideoDisc;
@@ -15,7 +16,7 @@ import hust.soict.hedspi.aims.store.Store;
 public class Aims {
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws PlayerException {
         Store store = new Store();
         Cart cart = new Cart();
 
@@ -106,7 +107,7 @@ public class Aims {
         System.out.print("Please choose a number: 0-1-2-3-4-5: ");
     }
 
-    private static void viewStore(Store store, Cart cart) {
+    private static void viewStore(Store store, Cart cart) throws PlayerException {
         int choice;
         do {
             System.out.println("\nStore contents:");
@@ -135,7 +136,7 @@ public class Aims {
         } while (choice != 0);
     }
 
-    private static void seeMediaDetails(Store store, Cart cart) {
+    private static void seeMediaDetails(Store store, Cart cart) throws PlayerException {
         System.out.print("Enter the title of the media: ");
         String title = scanner.nextLine();
         Media media = store.searchByTitle(title);
@@ -181,7 +182,7 @@ public class Aims {
         }
     }
 
-    private static void playMedia(Store store) {
+    private static void playMedia(Store store) throws PlayerException {
         System.out.print("Enter the title of the media to play: ");
         String title = scanner.nextLine();
         Media media = store.searchByTitle(title);

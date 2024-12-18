@@ -43,6 +43,10 @@ public class Store {
         return null;	
     }
 
+    public ArrayList<Media> getItems() {
+        return itemsInStore;
+    }
+    
     public String toString() {
         StringBuilder storeContents = new StringBuilder("-----------Store contents:-------------\n");
         for (Media media : itemsInStore) {
